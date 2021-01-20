@@ -31,7 +31,7 @@ def is_digit(user_input_number):
     # '''
     # ===Modify codes below=============
     # 조건에 따라 변환되어야 할 결과를 result 변수에 할당
-    result = None
+    result = user_input_number.isdigit()
 
     # ==================================
     return result
@@ -58,7 +58,7 @@ def is_between_100_and_999(user_input_number):
     # '''
     # ===Modify codes below=============
     # 조건에 따라 변환되어야 할 결과를 result 변수에 할당
-    result = None
+    result = 100 <= int(user_input_number) < 1000
 
     # ==================================
     return result
@@ -87,7 +87,7 @@ def is_duplicated_number(three_digit):
     # ===Modify codes below=============
     # 조건에 따라 변환되어야 할 결과를 result 변수에 할당
 
-    result = None
+    result = len(set([d for d in str(three_digit)])) < 3
     # ==================================
     return result
 
@@ -115,7 +115,9 @@ def is_validated_number(user_input_number):
     # ===Modify codes below=============
     # 조건에 따라 변환되어야 할 결과를 result 변수에 할당
 
-    result = None
+    result = is_digit(user_input_number) and \
+            is_between_100_and_999(user_input_number) and \
+            not is_duplicated_number(user_input_number)
     # ==================================
     return result
 
@@ -142,7 +144,10 @@ def get_not_duplicated_three_digit_number():
     # 조건에 따라 변환되어야 할 결과를 result 변수에 할당
     # get_random_number() 함수를 사용하여 random number 생성
 
-    result = None
+    result = get_random_number()
+    while is_duplicated_number(result):
+        result = get_random_number()
+
     # ==================================
     return result
 
@@ -175,7 +180,8 @@ def get_strikes_or_ball(user_input_number, random_number):
     # ===Modify codes below=============
     # 조건에 따라 변환되어야 할 결과를 result 변수에 할당
 
-    result = None
+    result = [sum([1 for u, c in zip(user_input_number, random_number) if u == c]), \
+                sum([1 for u in user_input_number if u in random_number])]
     # ==================================
     return result
 
@@ -207,7 +213,7 @@ def is_yes(one_more_input):
     # ===Modify codes below=============
     # 조건에 따라 변환되어야 할 결과를 result 변수에 할당
 
-    result = None
+    result = one_more_input.lower() in ('y', 'yes')
     # ==================================
     return result
 
@@ -239,7 +245,7 @@ def is_no(one_more_input):
     # ===Modify codes below=============
     # 조건에 따라 변환되어야 할 결과를 result 변수에 할당
 
-    result = None
+    result = one_more_input.lower() in ('n', 'no')
     # ==================================
     return result
 
